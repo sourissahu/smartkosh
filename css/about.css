@@ -140,10 +140,10 @@
 .team-card {
   background: var(--c-bg);
   border-radius: var(--radius-m);
-  padding: 16px 16x;
+  padding: 18px 18x;
   text-align: center;
   border: 1px solid rgba(0,201,122,0.2);
-  border-top: 2px solid var(--c-accent);
+/*  border-top: 2px solid var(--c-accent);*/
   transition: all var(--t-med) var(--ease-spring);
   position: relative;
   overflow: hidden;
@@ -169,9 +169,9 @@
 
 .member-avatar {
   width: 150px; height: 150px;
-  border-radius: 50%;
+  border-radius: 80%;
   background: linear-gradient(135deg, var(--c-accent-soft), rgba(0,201,122,0.12));
-  border: 2.5px solid rgba(0,201,122,0.3);
+  border: 2px solid rgba(0,201,122,0.1);
   margin: 0 auto 14px;
   display: flex;
   align-items: center;
@@ -183,7 +183,7 @@
 
 .team-card:hover .member-avatar {
   border-color: var(--c-accent);
-  box-shadow: 0 0 0 4px rgba(0,201,122,0.12);
+  box-shadow: 0 0 0 2px rgba(0,201,122,0.12);
 }
 
 .member-avatar img {
@@ -194,7 +194,7 @@
 /* Initials fallback */
 .member-avatar .initials {
   font-family: var(--f-display);
-  font-size: 22px;
+  font-size: 20px;
   color: var(--c-accent);
 }
 
@@ -203,7 +203,7 @@
   font-size: 15px;
   color: var(--c-dark);
   font-weight: 700;
-  margin-bottom: 4px;
+/*  margin-bottom: 2px;*/
   letter-spacing: -0.01em;
   position: relative;
   z-index: 1;
