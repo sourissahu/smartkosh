@@ -202,21 +202,24 @@
   .hamburger { display: flex; }
 
   .nav-links {
-    position: fixed;
-    inset: 0 0 0 0;
-    top: var(--nav-h);
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background: rgba(9, 21, 16, 0.97);
-    backdrop-filter: blur(24px);
-    transform: translateX(100%);
-    transition: transform var(--t-med) var(--ease-out);
-    padding: 40px 24px;
-    z-index: 998;          /* sits above ALL page content */
-    overflow-y: auto;
-  }
+  position: fixed;
+  top: var(--nav-h);
+  left: 0;
+  width: 100%;
+  height: calc(100dvh - var(--nav-h));   /* dvh = device visual viewport */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(9, 21, 16, 0.99);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  transform: translateX(100%);
+  transition: transform var(--t-med) var(--ease-out);
+  padding: 40px 24px;
+  z-index: 998;
+  overflow-y: hidden;
+}
 
   .nav-links.open { transform: translateX(0); }
 
@@ -241,78 +244,3 @@
   .brand-name { font-size: 16px; }
 }
 
-/* ==========================================================================
-   Global / Desktop Navigation Layout Fix
-   ========================================================================== */
-
-/* 1. Force the parent header to stay completely locked at the top of the screen */
-header, .nav-container, nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: var(--nav-h, 70px);   /* Locks it to your exact height variable */
-  background: #091510;          /* Matches your deep theme background color */
-  z-index: 999;                 /* Sits safely HIGHER than the mobile overlay (998) */
-  box-shadow: 0 2px 20px rgba(0,0,0,0.2); /* Optional: subtle depth when scrolling */
-}
-
-/* 2. Pushes main page content down so it doesn't hide underneath the new fixed nav */
-body {
-  padding-top: var(--nav-h, 70px);
-}
-
-/* ==========================================================================
-   Mobile Nav Media Queries
-   ========================================================================== */
-@media (max-width: 900px) {
-  .hamburger { 
-    display: flex; 
-  }
-
-  .nav-links {
-    position: fixed;
-    inset: 0 0 0 0;
-    top: var(--nav-h, 70px);    /* Aligns perfectly right underneath the fixed header */
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background: rgba(9, 21, 16, 0.97);
-    backdrop-filter: blur(24px);
-    transform: translateX(100%);
-    transition: transform var(--t-med) var(--ease-out);
-    padding: 40px 24px;
-    z-index: 998;               /* Sits above main body content, but beneath master nav bar */
-    overflow-y: auto;
-  }
-
-  .nav-links.open { 
-    transform: translateX(0); 
-  }
-
-  .nav-links a {
-    font-size: 12px;
-    padding: 14px 28px;
-    width: 100%;
-    text-align: center;
-    color: rgba(255,255,255,0.85);
-  }
-
-  .nav-cta {
-    margin: 16px 0 0;
-    width: 80%;
-    justify-content: center;
-    font-size: 16px !important;
-    padding: 14px 28px !important;
-  }
-}
-
-@media (max-width: 1100px) {
-  .nav-inner { 
-    padding: 0 4%; 
-  }
-  .brand-name { 
-    font-size: 16px; 
-  }
-}
