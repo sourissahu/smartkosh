@@ -101,7 +101,7 @@
 
 /* Award badge */
 .award-badge {
-  width: 52px; height: 52px;
+  width: 180px; height: 180px;
   border-radius: var(--radius-s);
   background: var(--c-accent-soft);
   border: 1px solid rgba(0,201,122,0.2);
@@ -153,6 +153,22 @@
   line-height: 1;
   pointer-events: none;
   transition: opacity var(--t-med) ease;
+}
+
+/* Ensure the image scales properly inside the square badge block */
+.award-badge img.badge-img {
+  width: 30%;
+  height: 30%;
+  object-fit: contain;     /* Prevents stretching or distortion */
+  padding: 16px;           /* Gives padding breathing space inside the box boundary */
+}
+
+/* Ensure the giant background ghost image fits accurately */
+.award-corner-icon img.corner-img {
+  width: 20px;            /* Fixes the sizing footprint since it's no longer font-driven */
+  height: 20px;
+  object-fit: contain;
+  filter: brightness(0) invert(1); /* Forces standard colored graphics to appear pure white */
 }
 
 .award-card:hover .award-corner-icon { opacity: 0.07; }
