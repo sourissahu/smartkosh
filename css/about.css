@@ -132,17 +132,17 @@
 /* Team grid */
 .team-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16x;
+  grid-template-columns: 2fr 2fr;
+  gap: 16px;
 }
 
 /* Team member card */
 .team-card {
   background: var(--c-bg);
   border-radius: var(--radius-m);
-  padding: 18px 18x;
+  padding: 18px 18px;
   text-align: center;
-  border: 1px solid rgba(0,201,122,0.2);
+  border: 3px solid rgba(0,201,122,0.2);
 /*  border-top: 2px solid var(--c-accent);*/
   transition: all var(--t-med) var(--ease-spring);
   position: relative;
@@ -168,8 +168,8 @@
 .team-card:hover::before { height: 100%; }
 
 .member-avatar {
-  width: 150px; height: 150px;
-  border-radius: 80%;
+  width: 130px; height: 130px;
+  border-radius: 50%;
   background: linear-gradient(135deg, var(--c-accent-soft), rgba(0,201,122,0.12));
   border: 2px solid rgba(0,201,122,0.1);
   margin: 0 auto 14px;
@@ -184,7 +184,11 @@
 .team-card:hover .member-avatar {
   border-color: var(--c-accent);
   box-shadow: 0 0 0 2px rgba(0,201,122,0.12);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transform: translateY(-4px);
 }
+
+
 
 .member-avatar img {
   width: 100%; height: 100%;
@@ -203,10 +207,10 @@
   font-size: 15px;
   color: var(--c-dark);
   font-weight: 700;
-/*  margin-bottom: 2px;*/
+  margin-bottom: 2px;
   letter-spacing: -0.01em;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .member-role {
