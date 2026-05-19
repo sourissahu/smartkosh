@@ -214,6 +214,8 @@
     transform: translateX(100%);
     transition: transform var(--t-med) var(--ease-out);
     padding: 40px 24px;
+    z-index: 998;          /* sits above ALL page content */
+    overflow-y: auto;
   }
 
   .nav-links.open { transform: translateX(0); }
