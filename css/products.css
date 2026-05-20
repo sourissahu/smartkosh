@@ -140,6 +140,11 @@
   flex: 1;
   position: relative;
   z-index: 1;
+  text-align: justify;
+  hyphens: auto;           /* Automatically adds hyphens to long words at line breaks */
+  word-break: break-word;   /* Safely handles ultra-long technical words (like micro-architecture) */
+  text-align-last: left;    /* Forces the final line of a paragraph to align normally to the left */
+/*  text-justify: inter-word; /* Ensures spacing between words remains natural */*/
 }
 
 /* Product card footer link */
