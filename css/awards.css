@@ -142,6 +142,8 @@
   font-size: 14px;
   color: rgba(255,255,255,0.42);
   line-height: 1.65;
+  text-align: justify;
+  text-justify: inter-word; /* Ensures spacing between words remains natural */
 }
 
 /* Trophy decoration */
