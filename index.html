@@ -99,11 +99,11 @@
       <!-- Stats strip -->
       <div class="hero-stats" aria-label="Key metrics">
         <div class="stat-item">
-          <div class="stat-num" data-target="40" data-suffix="%">40%</div>
+          <div class="stat-num" data-target="30" data-suffix="%">40%</div>
           <div class="stat-label">Battery Life Extension</div>
         </div>
         <div class="stat-item">
-          <div class="stat-num" data-target="2020" data-suffix="">2020</div>
+          <div class="stat-num" data-target="2022" data-suffix="">2020</div>
           <div class="stat-label">Founded</div>
         </div>
         <div class="stat-item">
@@ -186,7 +186,7 @@
             Driving the Shift Towards <em>Renewable Clean Energy</em>
           </h2>
           <p class="reveal reveal-delay-2">
-            Founded in 2020, SmartKosh Technologies Private Limited was born to address critical global climate and pollution challenges. We engineer intelligent battery monitoring frameworks designed for the demands of tomorrow's electrified world.
+            Founded in 2022, SmartKosh Technologies Private Limited was born to address critical global climate and pollution challenges. We engineer intelligent battery monitoring frameworks designed for the demands of tomorrow's electrified world.
           </p>
           <p class="reveal reveal-delay-2">
             Our robust system architectures significantly expand battery life cycles, maximize active performance efficiency, and proactively mitigate thermal risks before they become failures.
@@ -420,6 +420,7 @@
   </section>
 
 
+ 
   <!-- ═══════════════════════════════════════════
        NEWS & MEDIA
        ═══════════════════════════════════════════ -->
@@ -432,47 +433,221 @@
         <p>Stay current with SmartKosh's milestones, announcements, and ecosystem news.</p>
       </div>
 
-      <div class="news-grid">
+      <!-- Slider outer — clips the track, leaves room for arrows -->
+      <div style="position: relative; padding: 0 52px;">
 
-        <article class="news-card reveal reveal-delay-1">
-          <div class="news-card-img" aria-hidden="true">
-            <div class="news-card-img-decor"></div>
-            <span class="news-card-img-icon">🏛️</span>
-          </div>
-          <div class="news-card-body">
-            <div class="news-type">Announcement</div>
-            <h3 class="news-title">SmartKosh Incubated at i-TIC Foundation, IIT Hyderabad</h3>
-            <p class="news-excerpt">Accelerating development cycles for local clean energy management solutions with premier institutional resources and world-class research infrastructure.</p>
-          </div>
-        </article>
+        <!-- Left Arrow -->
+        <button id="newsPrev" aria-label="Previous"
+          onclick="slideNews(-1)"
+          style="position:absolute; left:0; top:50%; transform:translateY(-50%);
+                 width:42px; height:42px; border-radius:50%;
+                 border:1.5px solid #e0e7e4; background:#fff;
+                 display:flex; align-items:center; justify-content:center;
+                 font-size:17px; cursor:pointer; z-index:3;
+                 box-shadow:0 4px 14px rgba(0,0,0,0.08);
+                 transition:all .2s ease; color:#1a2e28;">&#8592;</button>
 
-        <article class="news-card reveal reveal-delay-2">
-          <div class="news-card-img" aria-hidden="true">
-            <div class="news-card-img-decor"></div>
-            <span class="news-card-img-icon">🏆</span>
-          </div>
-          <div class="news-card-body">
-            <div class="news-type">Awards</div>
-            <h3 class="news-title">Securing National Hardware Design Accolades</h3>
-            <p class="news-excerpt">Honored by semiconductor industry leaders NXP India and Arm for micro-architecture performance efficiency metrics and innovative BMS design.</p>
-          </div>
-        </article>
+        <!-- Track viewport — hides overflow -->
+        <div style="overflow:hidden; border-radius:16px;">
 
-        <article class="news-card reveal reveal-delay-3">
-          <div class="news-card-img" aria-hidden="true">
-            <div class="news-card-img-decor"></div>
-            <!-- <span class="news-card-img-icon">⚡</span> -->
-            <img src="assets/images/hil.png" alt="" class="news-icon-graphic">
-          </div>
-          <div class="news-card-body">
-            <div class="news-type">Product</div>
-            <h3 class="news-title">EdgeBMS — Real-Time Edge Computing for Batteries</h3>
-            <p class="news-excerpt">Launching our flagship edge computing battery management framework, enabling sub-millisecond fault detection and intelligent cell balancing.</p>
-          </div>
-        </article>
+          <!-- Scrolling track -->
+          <div id="newsTrack"
+            style="display:flex; gap:20px; transition:transform .45s cubic-bezier(0.25,1,0.5,1); will-change:transform;">
 
+            <!-- Card 1 -->
+            <article class="news-card" style="flex:0 0 calc((100% - 40px)/3);">
+              <div class="news-card-img">
+                <div class="news-card-img-decor"></div>
+                <!-- <span class="news-card-img-icon">⚡</span> -->
+                <img src="assets/images/hil.png" alt="News Category Icon" class="news-icon-graphic">
+              </div>
+              <div class="news-card-body">
+                <div class="news-type">Product</div>
+                <h3 class="news-title">EdgeBMS — Real-Time Edge Computing for Batteries</h3>
+                <p class="news-excerpt">Launching our flagship edge computing battery management framework, enabling sub-millisecond fault detection and intelligent cell balancing.</p>
+              </div>
+            </article>
+
+            <!-- Card 2-->
+            <article class="news-card" style="flex:0 0 calc((100% - 40px)/3);">
+              <div class="news-card-img">
+                <div class="news-card-img-decor"></div>
+                <!-- <span class="news-card-img-icon">🔋</span> -->
+                <img src="assets/images/prod2.jpeg" alt="News Category Icon" class="news-icon-graphic">
+              </div>
+              <div class="news-card-body">
+                <div class="news-type">Milestone</div>
+                <h3 class="news-title">Next-Gen Active Cell Balancing Architecture Validated</h3>  
+                <!-- BMSoC Achieves Ultra-Low Power Benchmarks -->
+                <p class="news-excerpt">SmartKosh has successfully engineered a high-efficiency active cell balancing system. By dynamically redistributing energy from stronger cells to weaker ones rather than wasting it as heat, our matrix maximizes pack capacity, extends battery lifecycle by up to 30%, and prevents thermal runaway in multi-cell configurations.</p>
+                <!-- Our AI-powered System-on-Chip sets a new industry benchmark in thermal monitoring efficiency at under 2mW idle consumption. -->
+              </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="news-card" style="flex:0 0 calc((100% - 40px)/3);">
+              <div class="news-card-img">
+                <div class="news-card-img-decor"></div>
+                <!-- <span class="news-card-img-icon">🌱</span> -->
+                <img src="assets/images/prod1.jpeg" alt="News Category Icon" class="news-icon-graphic">
+              </div>
+              <div class="news-card-body">
+                <div class="news-type">Sustainability</div>
+                <h3 class="news-title">SmartKosh Joins India's Green Tech Initiative 2025</h3>
+                <p class="news-excerpt">Partnering with national clean energy bodies to drive EV battery safety standards across the Indian subcontinent.</p>
+              </div>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="news-card" style="flex:0 0 calc((100% - 40px)/3);">
+              <div class="news-card-img">
+                <div class="news-card-img-decor"></div>
+                <span class="news-card-img-icon">🏆</span>
+              </div>
+              <div class="news-card-body">
+                <div class="news-type">Awards</div>
+                <h3 class="news-title">Securing National Hardware Design Accolades</h3>
+                <p class="news-excerpt">Honored by semiconductor industry leaders NXP India and Arm for micro-architecture performance efficiency metrics and innovative BMS design.</p>
+              </div>
+            </article>
+
+          </div><!-- /track -->
+        </div><!-- /viewport -->
+
+        <!-- Right Arrow -->
+        <button id="newsNext" aria-label="Next"
+          onclick="slideNews(1)"
+          style="position:absolute; right:0; top:50%; transform:translateY(-50%);
+                 width:42px; height:42px; border-radius:50%;
+                 border:1.5px solid #e0e7e4; background:#fff;
+                 display:flex; align-items:center; justify-content:center;
+                 font-size:17px; cursor:pointer; z-index:3;
+                 box-shadow:0 4px 14px rgba(0,0,0,0.08);
+                 transition:all .2s ease; color:#1a2e28;">&#8594;</button>
+
+      </div><!-- /slider outer -->
+
+      <!-- Dots -->
+      <div id="newsDots"
+        style="display:flex; justify-content:center; align-items:center; gap:8px; margin-top:28px;">
       </div>
+
     </div>
+
+    <script>
+    (function () {
+      const track    = document.getElementById('newsTrack');
+      const dotsWrap = document.getElementById('newsDots');
+      const prevBtn  = document.getElementById('newsPrev');
+      const nextBtn  = document.getElementById('newsNext');
+      const cards    = Array.from(track.querySelectorAll('.news-card'));
+      const GAP      = 20;
+      let current    = 0;
+
+      /* Arrow hover styles */
+      [prevBtn, nextBtn].forEach(btn => {
+        btn.addEventListener('mouseenter', () => {
+          btn.style.background = '#00c97a';
+          btn.style.borderColor = '#00c97a';
+          btn.style.color = '#000';
+          btn.style.boxShadow = '0 6px 20px rgba(0,201,122,0.35)';
+        });
+        btn.addEventListener('mouseleave', () => {
+          btn.style.background = '#fff';
+          btn.style.borderColor = '#e0e7e4';
+          btn.style.color = '#1a2e28';
+          btn.style.boxShadow = '0 4px 14px rgba(0,0,0,0.08)';
+        });
+      });
+
+      function perPage() {
+        return window.innerWidth < 640 ? 1 : window.innerWidth < 900 ? 2 : 3;
+      }
+
+      function maxIdx() {
+        return Math.max(0, cards.length - perPage());
+      }
+
+      /* Each card width = (trackWidth - gaps) / visible */
+      function cardW() {
+        const pp  = perPage();
+        const trk = track.parentElement.offsetWidth; /* viewport width */
+        return (trk - GAP * (pp - 1)) / pp;
+      }
+
+      function setWidths() {
+        const w = cardW();
+        cards.forEach(c => { c.style.flex = `0 0 ${w}px`; });
+      }
+
+      function applyTranslate() {
+        const w     = cardW();
+        const shift = current * (w + GAP);
+        track.style.transform = `translateX(-${shift}px)`;
+      }
+
+      function buildDots() {
+        dotsWrap.innerHTML = '';
+        const total = maxIdx() + 1;
+        for (let i = 0; i < total; i++) {
+          const d = document.createElement('button');
+          const active = i === current;
+          d.style.cssText = `
+            width:${active ? '26px' : '8px'};
+            height:8px;
+            border-radius:99px;
+            border:none;
+            background:${active ? '#00c97a' : 'rgba(0,0,0,0.15)'};
+            cursor:pointer;
+            padding:0;
+            transition:all .35s ease;
+          `;
+          d.setAttribute('aria-label', `Go to slide ${i + 1}`);
+          d.addEventListener('click', () => goTo(i));
+          dotsWrap.appendChild(d);
+        }
+        /* disable arrows at edges */
+        prevBtn.style.opacity = current === 0        ? '0.35' : '1';
+        nextBtn.style.opacity = current >= maxIdx()  ? '0.35' : '1';
+        prevBtn.disabled = current === 0;
+        nextBtn.disabled = current >= maxIdx();
+      }
+
+      function goTo(idx) {
+        current = Math.max(0, Math.min(idx, maxIdx()));
+        applyTranslate();
+        buildDots();
+      }
+
+      window.slideNews = function (dir) { goTo(current + dir); };
+
+      /* Touch / swipe */
+      let tx = 0;
+      track.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+      track.addEventListener('touchend',   e => {
+        const diff = tx - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) slideNews(diff > 0 ? 1 : -1);
+      });
+
+      /* Init & resize */
+      function init() {
+        setWidths();
+        goTo(current);
+      }
+
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          if (current > maxIdx()) current = maxIdx();
+          init();
+        }, 100);
+      });
+
+      init();
+    })();
+    </script>
+
   </section>
 
 
@@ -517,6 +692,7 @@
         <!-- Form -->
         <div class="contact-form-panel reveal reveal-delay-2">
           <h3>Send a Message</h3>
+          <form class="contact-form-el" action="https://formspree.io/f/mojbepqp" method="POST">
           <form class="contact-form-el" novalidate>
             <div class="form-row">
               <div class="form-group">
