@@ -86,30 +86,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
   counters.forEach(el => counterObserver.observe(el));
 
-  /* ── Contact form ── */
-  const contactForm = document.querySelector('.contact-form-el');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const btn     = contactForm.querySelector('.btn-submit');
-      const origHTML = btn.innerHTML;
+  /* ── Contact form (Updated for Live Formspree Routing) ── */
+const contactForm = document.querySelector('.contact-form-el');
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault(); // Prevents the old blank page refresh
+    
+    const btn      = contactForm.querySelector('.btn-submit');
+    const origHTML = btn.innerHTML;
 
-      btn.innerHTML = `<span>Sending…</span>`;
-      btn.disabled  = true;
+    // 1. Enter the Sending State animation layout
+    btn.innerHTML = `<span>Sending…</span>`;
+    btn.disabled  = true;
 
-      setTimeout(() => {
+    // Create a data package out of the user's filled inputs
+    const formData = new FormData(contactForm);
+
+    try {
+      // 2. Fire the live submission across the network to Formspree
+      const response = await fetch(contactForm.action, {
+        method: contactForm.method,
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        // 3. Success State: Formspree accepted it! Run your success checkmark animation
         btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Message Sent!</span>`;
         btn.style.background = '#00c97a';
 
+        // Clear the input fields immediately so users don't multi-click submit
+        contactForm.reset();
+
+        // 4. Cool-down state: Revert the button layout back to default after 3 seconds
         setTimeout(() => {
           btn.innerHTML = origHTML;
           btn.style.background = '';
           btn.disabled = false;
-          contactForm.reset();
         }, 3000);
-      }, 1200);
-    });
-  }
+
+      } else {
+        throw new Error('Server returned submission failure code.');
+      }
+    } catch (error) {
+      // 5. Fallback State: Show a distinct failure mode if an internet interruption happens
+      btn.innerHTML = `<span>Error. Try Again!</span>`;
+      btn.style.background = '#ef4444'; // Changes button background to alert red
+      btn.disabled = false;
+
+      // Revert from red alert back to normal format after 4 seconds
+      setTimeout(() => {
+        btn.innerHTML = origHTML;
+        btn.style.background = '';
+      }, 4000);
+    }
+  });
+}
 
   /* ── Cursor glow effect on hero ── */
   const hero = document.querySelector('.hero');
